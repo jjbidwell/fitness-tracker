@@ -1,3 +1,5 @@
+console.log("API.js connected");
+
 const API = {
   async getLastWorkout() {
     let res;

@@ -1,5 +1,5 @@
 // get all workout data from back-end
-
+console.log("stats.js connected");
 fetch("/api/workouts/range")
   .then(response => {
     return response.json();
