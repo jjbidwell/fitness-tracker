@@ -63,6 +63,10 @@ app.post("/api/workouts/", (req, res) => {
     });
 });
 
+// app.get("api/workouts/", (req, res) => {
+//     console.log("api/workouts/range Gotten");
+// });
+
 
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
