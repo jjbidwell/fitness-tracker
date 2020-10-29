@@ -7,7 +7,7 @@ const Workout = require("./models/workout");
 
 const app = express();
 
-const PORT = process.env.PORT || 9090;
+const PORT = process.env.PORT || 8080;
 
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
@@ -30,14 +30,19 @@ app.get("/", (req, res) => {
 
 app.get("/exercise", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "html/exercise.html"), () => {
-        console.log("Exercise page reached");
     });
 });
 
 app.get("/stats", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "html/stats.html"), () => {
-        console.log("stats page reached");
     });
+});
+
+app.get("/api/workouts/", (req, res) => {
+    Workout.find().then(results => {
+        res.json(results);
+    })
+    
 });
 
 app.put("/api/workouts/", ({ body }, res) => {
@@ -46,9 +51,7 @@ app.put("/api/workouts/", ({ body }, res) => {
     });
 });
 
-app.post("/api/workouts/", ({ body }, res) => {
-    
-});
+
 
 
 app.listen(PORT, () => {
