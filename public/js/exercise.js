@@ -131,6 +131,7 @@ function handleToastAnimationEnd() {
 }
 
 function clearInputs() {
+  console.log("Clearing inputs");
   cardioNameInput.value = "";
   nameInput.value = "";
   setsInput.value = "";
