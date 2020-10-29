@@ -45,13 +45,23 @@ app.get("/api/workouts/", (req, res) => {
     
 });
 
-app.put("/api/workouts/", ({ body }, res) => {
-    Workout.create(body).then(result => {
-        console.log(result);
-    });
+app.put("/api/workouts/:id", (req, res) => {
+    console.log(req.params.id);
+    console.log(req.body);
+    Workout.updateOne(
+        { _id: req.params.id},
+        { $push: {exercises: req.body} } 
+        ).then(results => {
+            //console.log(results);
+        });
 });
 
 
+app.post("/api/workouts/", (req, res) => {
+    Workout.create({}).then(results => {
+        console.log("post");
+    });
+});
 
 
 app.listen(PORT, () => {
