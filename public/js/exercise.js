@@ -1,5 +1,3 @@
-console.log("exercise.js connected");
-
 const workoutTypeSelect = document.querySelector("#type");
 const cardioForm = document.querySelector(".cardio-form");
 const resistanceForm = document.querySelector(".resistance-form");
@@ -23,12 +21,10 @@ async function initExercise() {
   let workout;
 
   if (location.search.split("=")[1] === undefined) {
-    workout = await API.createWorkout()
-    console.log(workout)
+    workout = await API.createWorkout();
   }
   if (workout) {
     location.search = "?id=" + workout._id;
-    console.log(location.search);
   }
 
 }
@@ -99,7 +95,6 @@ function validateInputs() {
 }
 
 async function handleFormSubmit(event) {
-  console.log(workoutType);
   event.preventDefault();
 
   let workoutData = {};
@@ -131,7 +126,6 @@ function handleToastAnimationEnd() {
 }
 
 function clearInputs() {
-  console.log("Clearing inputs");
   cardioNameInput.value = "";
   nameInput.value = "";
   setsInput.value = "";

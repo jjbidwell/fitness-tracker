@@ -46,8 +46,7 @@ app.get("/api/workouts/", (req, res) => {
 
 app.put("/api/workouts/:id", (req, res) => {
     Workout.findOne(
-        { _id: req.params.id},
-        //{ $push: {exercises: req.body} } 
+        { _id: req.params.id}
         ).then(results => {
             const exercises = results.exercises;
             exercises.push(req.body);
